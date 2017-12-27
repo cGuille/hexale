@@ -1,0 +1,6 @@
+[package]
+name = "hexale"
+version = "0.1.0"
+authors = ["Guillaume Charmetant <cguille.dev@gmail>"]
+
+[dependencies]
