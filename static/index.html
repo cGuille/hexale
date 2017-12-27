@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
     <title>Hexale, the game</title>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
 <h1>Hexale</h1>
+
+<section id="hexale-game">
+    <section id="hexale-game-word-choice">
+        <label for="hexale-game-word-choice-input">
+            Enter a word for your opponent to guess:
+        </label>
+        <input id="hexale-game-word-choice-input" type="text" size="6" minlength="6" maxlength="6" />
+        <button id="hexale-game-word-choice-confirm-btn" type="button">Let them guess!</button>
+    </section>
+
+    <section id="hexale-game-guesses">
+        <div id="hexale-game-guess-sender">
+            <label for="hexale-game-guess-input">
+                Try to guess your opponent's word:
+            </label>
+            <input id="hexale-game-guess-input" type="text" size="6" minlength="6" maxlength="6" />
+            <button id="hexale-game-guess-send-btn" type="button">Try this one</button>
+        </div>
+
+        <!-- See #hexale-game-guess-result-tpl -->
+        <div id="hexale-game-guesses-display">
+        </div>
+    </section>
+</section>
+
+<template id="hexale-game-guess-result-tpl">
+    <div class="hexale-game-guess-result">
+        <span class="hexale-game-guess-value"></span>
+        <span class="hexale-game-guess-score"></span>
+    </div>
+</template>
 
 <script src="js/hexale.js"></script>
 </body>
