@@ -1,0 +1,13 @@
+{
+  "name": "hexale",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Hexale game client",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack --watch"
+  },
+  "devDependencies": {
+    "webpack": "^3.10.0"
+  }
+}
