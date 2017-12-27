@@ -7,3 +7,6 @@ authors = ["Guillaume Charmetant <cguille.dev@gmail>"]
 iron = "0.6.0"
 log = "0.4.0"
 simplelog = "0.4.4"
+mount = "0.4.0"
+staticfile = "0.5.0"
+router = "0.6.0"
