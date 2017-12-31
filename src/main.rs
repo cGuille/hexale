@@ -7,6 +7,9 @@ extern crate mount;
 extern crate router;
 extern crate staticfile;
 extern crate unicode_normalization;
+extern crate uuid;
+
+mod hexale;
 
 use iron::prelude::*;
 use mount::Mount;
@@ -17,9 +20,20 @@ use std::ascii::AsciiExt;
 use std::path::Path;
 use unicode_normalization::UnicodeNormalization;
 
-fn hello_world(request: &mut Request) -> IronResult<Response> {
-    info!("Running hello_world handler, URL path: {}", request.url.path().join("/"));
+fn game(request: &mut Request) -> IronResult<Response> {
+    info!("Running game handler, URL path: {}", request.url.path().join("/"));
     Ok(Response::with((iron::status::Ok, normalize(String::from("Hello World")))))
+}
+
+fn create_game(request: &mut Request) -> IronResult<Response> {
+    info!("Running create_game handler, URL path: {}", request.url.path().join("/"));
+
+    let mut game: hexale::Game = Default::default();
+    info!("GAME: {:?}", game);
+    game.set_turn(hexale::Turn::Player2);
+    info!("GAME: {:?}", game);
+
+    Ok(Response::with((iron::status::Ok, game.id())))
 }
 
 // This function can be used to check guesses: instead of comparing "accusé"
@@ -32,7 +46,8 @@ fn main() {
     TermLogger::init(LogLevelFilter::Info, Config::default()).unwrap();
 
     let mut router = Router::new();
-    router.get("/hello", hello_world, "hello");
+    router.get("/game", game, "game");
+    router.post("/game", create_game, "create_game");
 
     let mut mount = Mount::new();
     mount.mount("/", Static::new(Path::new("static")));
